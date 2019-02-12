@@ -8,7 +8,7 @@
  */
 
 import React, {Component,Fragment} from 'react';
-import {Platform, StyleSheet, Text, View,ImageBackground,StatusBar,ScrollView} from 'react-native';
+import {Platform, StyleSheet, Text, View,ImageBackground,StatusBar,ScrollView,Image} from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 
@@ -29,9 +29,19 @@ class App extends Component<Props> {
         <StatusBar backgroundColor='#000' barStyle="light-content" />
         <ImageBackground source={require('./assets/cloud.jpg')}  style={{width: '100%', height: '100%'}}>
           <View style={styles.mainWrap}>
-                <View style={styles.headerWrap}></View>
+                <View style={styles.headerWrap}>
+                  <View style={styles.search}>
+                    <Image style={styles.searchIcon} source={require('./assets/s.png')}></Image>
+                  </View>
+                </View>
                 <View style={styles.bodyWrap}>
-                  <View style={styles.navigationDots}></View>
+                  <View style={styles.navigationDots}>
+                    <View style={styles.dot}></View>
+                    <View style={[styles.dot,{backgroundColor:'#fff'}]}></View>
+                    <View style={styles.dot}></View>
+                    <View style={styles.dot}></View>
+                    <View style={styles.dot}></View>
+                  </View>
                     {/* <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true}> */}
                   <ScrollView contentContainerStyle={styles.contentContainer} horizontal decelerationRate='fast' showsHorizontalScrollIndicator={false} snapToInterval={312} snapToAlignment={"center"} contentInset={{top: 0, left: 6, bottom: 0, right: 6}}>
                     <View style={styles.cityItem}><Text style={styles.cityName}>Warsaw</Text></View>
@@ -43,8 +53,9 @@ class App extends Component<Props> {
                   </ScrollView>
                     {/* <View style={styles.fade}></View> */}
                   <View style={styles.tempWrap}>
-                    <Text style={styles.temperature}>-26°</Text>
+                    <Text style={styles.temperature}>12°</Text>
                     <View style={styles.temperatureTextWrap}>
+                      <Image style={styles.tempIcon} source={require('./assets/rainn.png')}></Image>
                       <Text style={styles.tempText}>Raining</Text>
                     </View>
                   </View>
@@ -53,16 +64,25 @@ class App extends Component<Props> {
                       <Text style={styles.basicHeader}>Wind</Text>
                       <Text style={styles.basicItemText}>16</Text>
                       <Text style={styles.basicItemText}>Km/h</Text>
+                      <View style={styles.progress}>
+                        <View style={[styles.fill,{width:10}]}></View>
+                      </View>
                     </View>
                     <View style={styles.basicItem}>
                       <Text style={styles.basicHeader}>Rain</Text>
                       <Text style={styles.basicItemText}>100</Text>
                       <Text style={styles.basicItemText}>%</Text>
+                      <View style={styles.progress}>
+                        <View style={[styles.fill,{width:70}]}></View>
+                      </View>
                     </View>
                     <View style={styles.basicItem}>
                       <Text style={styles.basicHeader}>Humidity</Text>
                       <Text style={styles.basicItemText}>20</Text>
                       <Text style={styles.basicItemText}>%</Text>
+                      <View style={styles.progress}>
+                        <View style={[styles.fill,{width:15}]}></View>
+                      </View>
                     </View>             
                   </View>
                 </View>
@@ -84,6 +104,8 @@ const styles = StyleSheet.create({
   },
   headerWrap:{
     height:60,
+    paddingTop: 10,
+    paddingHorizontal: 10,
     // backgroundColor:'#f00',
   },
   bodyWrap:{
@@ -97,6 +119,10 @@ const styles = StyleSheet.create({
     height: 40,
    alignSelf: 'stretch',
    marginHorizontal: 10,
+   flexDirection: 'row',
+   justifyContent: 'flex-start',
+   alignItems: 'center',
+   paddingHorizontal: 16,
   },
    contentContainer: {
     marginTop: 4,
@@ -150,6 +176,9 @@ const styles = StyleSheet.create({
     height: 120,
     width: 300,
     marginHorizontal:32,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     // backgroundColor: '#fff',
   },
   tempText:{
@@ -179,6 +208,37 @@ const styles = StyleSheet.create({
     color:'#c3c3c3ee',
     fontWeight: 'bold',
     paddingBottom: 10,
+  },progress:{
+    marginTop:10,
+    width: 70,
+    height: 2,
+    borderRadius: 1,
+    backgroundColor: '#c3c3c3ee',
+  },
+  fill:{
+    // width: 50,
+    height: 2,
+    backgroundColor: '#f00',
+  },tempIcon:{
+    // backgroundColor: '#000',
+    height: 60,
+    width: 60,
+  },search:{
+    height: 50,
+    width: 50,
+    paddingVertical: 5,
+    paddingHorizontal: 16,
+  },
+  searchIcon:{
+    height: 30,
+    width: 30,
+    padding: 1,
+  },dot:{
+    height: 6,
+    width: 6,
+    borderRadius: 10,
+    marginHorizontal:5,
+    backgroundColor: '#c3c3c3ee',
   }
 });
 
