@@ -43,7 +43,7 @@ class App extends Component<Props> {
                     <View style={styles.dot}></View>
                   </View>
                     {/* <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true}> */}
-                  <ScrollView contentContainerStyle={styles.contentContainer} horizontal decelerationRate='fast' showsHorizontalScrollIndicator={false} snapToInterval={312} snapToAlignment={"center"} contentInset={{top: 0, left: 6, bottom: 0, right: 6}}>
+                  <ScrollView contentContainerStyle={styles.contentContainer} horizontal decelerationRate='normal' showsHorizontalScrollIndicator={false} snapToInterval={312} snapToAlignment={"center"} contentInset={{top: 0, left: 6, bottom: 0, right: 6}}>
                     <View style={styles.cityItem}><Text style={styles.cityName}>Warsaw</Text></View>
                     <View style={styles.cityItem}><Text style={styles.cityName}>Prague</Text></View>
                     <View style={styles.cityItem}><Text style={styles.cityName}>Stavanger</Text></View>
@@ -55,7 +55,7 @@ class App extends Component<Props> {
                   <View style={styles.tempWrap}>
                     <Text style={styles.temperature}>12°</Text>
                     <View style={styles.temperatureTextWrap}>
-                      <Image style={styles.tempIcon} source={require('./assets/rainn.png')}></Image>
+                      <Image style={styles.tempIcon} source={require('./assets/r.png')}></Image>
                       <Text style={styles.tempText}>Raining</Text>
                     </View>
                   </View>
@@ -174,8 +174,8 @@ const styles = StyleSheet.create({
   },
   temperatureTextWrap:{
     height: 120,
-    width: 300,
-    marginHorizontal:32,
+    // width: 300,
+    paddingHorizontal:32,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   tempText:{
     color:'#fff',
-    marginTop: 20,
+    marginHorizontal: 10,
     fontSize:20
   },
   basicInfo:{
@@ -221,8 +221,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f00',
   },tempIcon:{
     // backgroundColor: '#000',
-    height: 60,
-    width: 60,
+    height: 40,
+    width: 40,
   },search:{
     height: 50,
     width: 50,
